@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title>Slums in the Big City</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
+    <script src="https://code.jquery.com/jquery-1.6.2.min.js"></script>
+    <script src='main.js'></script>
+    <link href='main.css' rel='stylesheet' />
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', {packages:['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var oldData = google.visualization.arrayToDataTable([
+      ['City', 'Population'],
+      ['Mumbai', 11914398],
+      ['Delhi', 9817439],
+      ['Bangalore', 4292223],
+      ['Hyderabad', 3449878],
+      ['Ahmedabad', 3515361],
+      ['Chennai', 4216268],
+      ['Kolkata', 4580544],
+      ['Surat', 2433787],
+      ['Pune', 2540069],
+      ['Jaipur', 2324319]
+    ]);
+
+    var newData = google.visualization.arrayToDataTable([
+      ['City', 'Population'],
+      ['Mumbai', 12442373],
+      ['Delhi', 16349831],
+      ['Bangalore', 8443675],
+      ['Hyderabad', 6731790],
+      ['Ahmedabad', 5577940],
+      ['Chennai', 4646732],
+      ['Kolkata', 4496694],
+      ['Surat', 4467797],
+      ['Pune', 3124458],
+      ['Jaipur', 3046163]
+    ]);
+
+    
+    var colChartDiff = new google.visualization.ColumnChart(document.getElementById('colchart_diff'));
+    var barChartDiff = new google.visualization.BarChart(document.getElementById('barchart_diff'));
+
+    var options = { 
+        title: "Population Growth in Top 10 Indian Cities (2001 - 2011)",
+        legend: { position: 'none' },
+        hAxis: { title : 'Total Number of Residents'},
+        backgroundColor: '#fafafa',
+        diff : {
+            oldData: { opacity: 0, color: 'yellow' }, 
+            newData: { opacity: 1, color: 'yellow'},
+        }
+          };
+
+    var diffData = colChartDiff.computeDiff(oldData, newData);
+    barChartDiff.draw(diffData, options);
+  }
+</script>
+
+</head>
+<body>
+<span id='colchart_diff' ></span>
+<span id='barchart_diff' ></span>
+
+
+<div id='map'></div>
+<div id='features'>
+    <section id='part-1' class='active'>
+        <h3>Slums in the Big City: An Introduction</h3>
+        <p>As a part of the 2001 Census, for the first time the total slum populations in large cities was recorded. This data was subsequently updated during the 2011 Census.</p>
+        <p>In this project, we looked at the slum population data with respect to the total population data for India's 10 most populus cities.</p> 
+        <p>The aim was to identify any trends between population and slum growth in these cities.</p>
+        <p>The graph under the map is interactive and gives a quick perspecitve of how the Total Population has changed in these cities between 2001 and 2011</p>
+        <p><strong><ul>
+            <li>Violet Circle : City's Pop. (2001)</li> 
+            <li>Blue Circle : City's Pop. (2011)</li></strong>
+            </ul></strong>
+        The idea is to give a quick idea about how much or little, the total population of a city has grown</p>
+    </section>
+    <section id='part-2'>
+        <h3>Mumbai</h3>
+        <a href="mumbai.jpg">
+        <img src="mumbai.jpg" width="230" height="130"></a>
+        <p>With close to 12 million residents, Mumbai remains one of India's most populus cities.</p>
+        <ul>
+            <li>Slum Pop. (2011): 5.20 million</li>
+            <li>Slum Pop. (2001): 5.82 million</li>
+        </ul>
+        <p>Mumbai posits an interesting trend. While Mumbai's overall population rose by <strong>4.4%</strong> between 2001 and 2011, its slum population fell by nearly <strong>10.59%</strong> during the same time</p>
+        <p><strong>Please click on the graph to see it in full screen.</strong> Hit back to return.</p> 
+    </section>
+    <section id='part-3'>
+        <h3>Delhi</h3>
+        <a href="delhi.jpg">
+        <img src="delhi.jpg" width="230" height="130"></a>
+        <p>With approximately 16 million residents, Delhi became India's most populus city in 2011</p>
+        <ul>
+            <li>Slum Pop. (2011): 1.78 million</li>
+            <li>Slum Pop. (2001): 1.85 million</li>
+        </ul>
+        <p>Like Mumbai, Delhi too displays a remarkable trend. Between 2001 - 2011, Delhi's population grew by nearly <strong>66.53%</strong> while its slum population fell by <strong>3.73%</strong></p>
+        <p><strong>Please click on the graph to see it in full screen.</strong> Hit back to return.</p>
+    </section>
+    <section id='part-4'>
+        <h3>Bangalore</h3>
+        <a href="Bangalore.jpg">
+        <img src="Bangalore.jpg" width="230" height="130"></a>
+        <p>The overall population in Bangalore almost doubled between 2001 and 2011.</p> 
+        <ul>
+            <li>Slum Pop. (2011): 0.71 million</li>
+            <li>Slum Pop. (2001): 0.34 million</li>
+        </ul>
+        <p>While its absolute numbers are far lower than Delhi or Mumbai, the total slum population in Bangalore doubled during this time!</p>
+        <p>Bangalore's Population grew by <strong>96.72%</strong> between 2001 - 2011. In the same time, its slum population also grew by <strong>106.48%</strong></p>
+        <p><strong>Please click on the graph to see it in full screen.</strong> Hit back to return.</p>
+    </section>
+    <section id='part-5'>
+        <h3>Hyderabad</h3>
+        <a href="Hyderabad.jpg">
+        <img src="Hyderabad.jpg" width="230" height="130"></a>
+        <p>Like Bangalore, the overall population in Hyderabad almost doubled between 2001 and 2011.</p>
+        <ul>
+            <li>Slum Pop. (2011): 2.28 million</li>
+            <li>Slum Pop. (2001): 0.60 million</li>
+        </ul>
+        <p>Hyderabad's Population grew by <strong>95.13%</strong> between 2001 - 2011, which is pretty similar to Bangalore's growth rate. However, Hyderabad's slum population grew by a massive <strong>280.32%</strong></p>
+        <p><strong>This is the highest slum growth rate across all major Indian Cities!</strong></p>
+        <p><strong>Please click on the graph to see it in full screen.</strong> Hit back to return.</p>
+    </section>
+        <section id='part-6'>
+        <h3>Ahmedabad</h3>
+        <a href="Ahmedabad.jpg">
+        <img src="Ahmedabad.jpg" width="230" height="130"></a>
+        <p>Ahmedabad acheived some very interesting and respectable results</p>
+        <ul>
+            <li>Slum Pop. (2011): 0.25 million</li>
+            <li>Slum Pop. (2001): 0.43 million</li>
+        </ul>
+        <p>While Ahmedabad's population grew by a health <strong>58.67%</strong> the slum population <strong>fell</strong> by almost <strong>43%</strong> This is the largest % reduction in slum population across all major Indian Cities</p>
+        <p><strong>Please click on the graph to see it in full screen.</strong> Hit back to return.</p>
+    </section>
+    <section id='part-7'>
+        <h3>Chennai</h3>
+        <a href="Chennai.jpg">
+        <img src="Chennai.jpg" width="230" height="130"></a>
+        <p>Chennai exhibited trends that highlight a rather different trend compared to what we've seen thus far</p>
+        <ul>
+            <li>Slum Pop. (2011): 1.34 million</li>
+            <li>Slum Pop. (2001): 0.74 million</li>
+        </ul>
+        <p>Chennai had the 3rd lowest population growth rate amongst the top 10 cities. At <strong>10.20%</strong> the population growth rate of Chennai is just more than double of Mumbai. However, despite this the total slum population in Chennai grew by about <strong>79.47%</strong></p>
+        <p><strong>Please click on the graph to see it in full screen.</strong> Hit back to return.</p>  
+    </section>
+    <section id='part-8'>
+        <h3>Kolkata</h3>
+        <a href="Kolkata.jpg">
+        <img src="Kolkata.jpg" width="230" height="130"></a>
+        <p>Kolkata is the only city in the top 10 to record a fall in its total population between 2001 and 2011</p>
+        <ul>
+            <li>Slum Pop. (2011): 1.40 million</li>
+            <li>Slum Pop. (2001): 1.49 million</li>
+        </ul>
+        <p>While Kolkata's population <strong>reduced</strong> by <strong>1.83%</strong> its slum population fell by <strong>5.43%</strong> over the decade. This puts Kolkata in a class of its own.</p>
+        <p><strong>Please click on the graph to see it in full screen.</strong> Hit back to return.</p> 
+    </section>
+    <section id='part-9'>
+        <h3>Surat</h3>
+        <a href="Surat.jpg">
+        <img src="Surat.jpg" width="230" height="130"></a>
+        <p>Surat is the only case where both Total Population and Slum Population have grown, but with the slum population growing far slower than the total population</p>
+        <ul>
+            <li>Slum Pop. (2011): 0.46 million</li>
+            <li>Slum Pop. (2001): 0.40 million</li>
+        </ul>
+        <p>Surat's total population grew at a rate of almost <strong>85%</strong> During the same time, its slum population only grew by <strong>15.12%</strong></p> 
+        <p>A trend not seen in any other city in the Top 10</p>
+        <p><strong>Please click on the graph to see it in full screen.</strong> Hit back to return.</p> 
+    </section>
+    <section id='part-10'>
+        <h3>Pune</h3>
+        <a href="Pune.jpg">
+        <img src="Pune.jpg" width="230" height="130"></a>
+        <p>Pune displays very even growth rates across both Total Population and Slum Populations</p>
+        <ul>
+            <li>Slum Pop. (2011): 0.69 million</li>
+            <li>Slum Pop. (2001): 0.53 million</li>
+        </ul>
+        <p>Between 2001 and 2011, Pune's total population grew by approximately <strong>23%</strong> During this time its slum population grew by a similar <strong>29.96%</strong></p>
+        <p>This however does not account for Pimpri-Chinchwad, Pune's suburbs that can somewhat skew the total results</p>
+        <p><strong>Please click on the graph to see it in full screen.</strong> Hit back to return.</p> 
+    </section>
+    <section id='part-11'>
+        <h3>Jaipur</h3>
+        <a href="Jaipur.jpg">
+        <img src="Jaipur.jpg" width="230" height="130"></a>
+        <p>Jaipur displays trends that are similar to that of Ahmedabad</p>
+        <ul>
+            <li>Slum Pop. (2011): 0.32 million</li>
+            <li>Slum Pop. (2001): 0.35 million</li>
+        </ul>
+        <p>Like Ahmedabad, Jaipur also recorded a reasonable total population growth rate of <strong>31.05%</strong> while its slum population fell by <strong>7.69%</strong> during the same period.</p>
+        <p><strong>Please click on the graph to see it in full screen.</strong> Hit back to return.</p> 
+    </section>
+    <section id='part-12'>
+        <h3>Conclusion</h3>
+        <p>This report does not in any way provide any definitive reasons for why slum populations might be growing or falling with respect to the total population of cities.</p>
+        <p>However, what we do hope is clearly highlighted is the fact that the trends for slum population levels and total popultion levels are <strong>not</strong> the same across various large cities. This potentially provides a compelling reason to delve deeper to find possible reasons for such variations in trends across all these cities</p>
+        <p>It could be an interesting exercise to understand what led to a fall in slum levels across Mumbai, Delhi or Ahmedabad. Are these results of certain administrative policies or clever accounting gimics to hide the grim realities?</p>
+        <p>All in all, this can serve as a spring board to find ideas to help deal with urban housing problems in India</p>
+        <br>
+        <br>
+        <p>Developed by Apuroop Sethupathy, Dibyendu Mishra and Shivangi Tikekar</p>
+    </section>
+</div>
+
+</div>
+</body>
+</html>
